@@ -11,7 +11,7 @@
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
-    <webopt:bundlereference runat="server" path="~/Content/css" />
+    <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 </head>
@@ -46,33 +46,41 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
+                    <a class="navbar-brand" runat="server" href="~/">AFL Tipping</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
-                    <asp:LoginView runat="server" ViewStateMode="Disabled">
-                        <AnonymousTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Register">Register</a></li>
-                                <li><a runat="server" href="~/Account/Login">Login</a></li>
-                            </ul>
-                        </AnonymousTemplate>
-                        <LoggedInTemplate>
-                            <ul class="nav navbar-nav navbar-right">
-                                <li><a runat="server" href="~/Account/Manage" title="Manage your account">Hello, <%: Context.User.Identity.GetUserName()  %> !</a></li>
-                                <li><a runat="server" href="~/About">Modify Tips</a></li>
-                                <li><a runat="server" href="~/About">Statistics</a></li>
-                                <li>
-                                    <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
-                                </li>
+                    <div runat="server" id="anonymousUser" visible="false">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/">Home</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a runat="server" href="~/Account/Register">Register</a></li>
+                            <li><a runat="server" href="~/Account/Login">Login</a></li>
+                        </ul>
+                    </div>
 
-                            </ul>
-                        </LoggedInTemplate>
-                    </asp:LoginView>
+                    <div runat="server" id="loggedInAdmin" visible="false">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/ModifyTips">Modify Tips</a></li>
+                            <li><a runat="server" href="~/Statistics">Statistics</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </ul>
+                    </div>
+                    <div runat="server" id="loggedInTipsters" visible="false">
+                        <ul class="nav navbar-nav">
+                            <li><a runat="server" href="~/">Home</a></li>
+                            <li><a runat="server" href="~/Fixtures">Fixtures</a></li>
+                            <li><a runat="server" href="~/MakEtips">Make Tips</a></li>
+                            <li><a runat="server" href="~/MyTips">My Tips</a></li>
+                            <li><a runat="server" href="~/MyRanks">My Ranks</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -13,6 +13,33 @@ namespace WSD_Project {
     public partial class SiteMaster {
         
         /// <summary>
+        /// anonymousUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl anonymousUser;
+        
+        /// <summary>
+        /// loggedInAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loggedInAdmin;
+        
+        /// <summary>
+        /// loggedInTipsters control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl loggedInTipsters;
+        
+        /// <summary>
         /// MainContent control.
         /// </summary>
         /// <remarks>
