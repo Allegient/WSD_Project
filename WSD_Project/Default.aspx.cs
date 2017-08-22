@@ -11,7 +11,18 @@ namespace WSD_Project
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (HttpContext.Current.User.IsInRole("tipsters"))
+            {
+                loggedInTipsters.Visible = true;
+            }
+            else if (HttpContext.Current.User.IsInRole("administrators"))
+            {
+                loggedInAdmin.Visible = true;
+            }
+            else
+            {
+                anonymousUser.Visible = true;
+            }
         }
     }
 }
