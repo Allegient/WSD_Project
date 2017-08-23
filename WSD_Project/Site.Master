@@ -46,9 +46,11 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" runat="server" href="~/">AFL Tipping</a>
+                    <p class="mainLogo">AFL Tipping</p>
                 </div>
                 <div class="navbar-collapse collapse">
+
+                    <!-- View for users that are not logged in -->
                     <div runat="server" id="anonymousUser" visible="false">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/">Home</a></li>
@@ -59,6 +61,7 @@
                         </ul>
                     </div>
 
+                    <!-- View for admins that are logged in -->
                     <div runat="server" id="loggedInAdmin" visible="false">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/">Home</a></li>
@@ -66,9 +69,13 @@
                             <li><a runat="server" href="~/Statistics">Statistics</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </li>
                         </ul>
                     </div>
+
+                    <!-- View for tipsters who are logged in -->
                     <div runat="server" id="loggedInTipsters" visible="false">
                         <ul class="nav navbar-nav">
                             <li><a runat="server" href="~/">Home</a></li>
@@ -78,7 +85,9 @@
                             <li><a runat="server" href="~/MyRanks">My Ranks</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            <li>
+                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/" OnLoggingOut="Unnamed_LoggingOut" />
+                            </li>
                         </ul>
                     </div>
                 </div>
