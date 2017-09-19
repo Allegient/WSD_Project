@@ -51,7 +51,7 @@ namespace WSD_Project.Account
                         break;
                     case SignInStatus.Failure:
                     default:
-                        FailureText.Text = "Invalid login attempt";
+                        FailureText.Text = "You have either entered an incorrect E-mail or Password";
                         ErrorMessage.Visible = true;
                         break;
                 }
