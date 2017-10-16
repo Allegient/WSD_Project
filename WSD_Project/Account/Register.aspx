@@ -44,7 +44,7 @@
                 <asp:TextBox runat="server" ID="givenName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="givenName"
                     CssClass="text-danger" ErrorMessage="The given name field is required!" Display="Dynamic" />
-                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="givenName" ErrorMessage="Can only consist of 20 English letters and hyphen!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="givenName" ErrorMessage="Can only consist of 20 English letters, hyphen and apostrophe!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
@@ -53,7 +53,7 @@
                 <asp:TextBox runat="server" ID="familyName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="familyName"
                     CssClass="text-danger" ErrorMessage="The family name field is required!" Display="Dynamic" />
-                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="familyName" ErrorMessage="Can only consist of 20 English letters and hyphen!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="familyName" ErrorMessage="Can only consist of 20 English letters, hyphen and apostrophe!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
@@ -62,7 +62,8 @@
                 <asp:TextBox runat="server" ID="DOB" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DOB"
                     CssClass="text-danger" ErrorMessage="The date of birth field is required!" Display="Dynamic" />
-                <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToValidate="DOB" ErrorMessage="Date must be in the format: dd/mm/yyyy or dd-mm-yyyy!" ForeColor="Red" Operator="DataTypeCheck" Type="Date" ValidateRequestMode="Inherit" Display="Dynamic"></asp:CompareValidator>
+                <asp:CompareValidator ID="CompareValidator1" CssClass="text-danger" runat="server" ControlToValidate="DOB" ErrorMessage="Date must be in the format: dd/mm/yyyy or dd-mm-yyyy!" Operator="DataTypeCheck" Type="Date" ValidateRequestMode="Inherit" Display="Dynamic"></asp:CompareValidator>
+                <asp:CompareValidator ID="CompareValidator2" CssClass="text-danger" runat="server" ControlToValidate="DOB" ErrorMessage="You must be at least 20 years old!" Operator="LessThanEqual" Type="Date" Display="Dynamic"></asp:CompareValidator>
             </div>
         </div>
         <div class="form-group">
@@ -87,13 +88,13 @@
                 <asp:DropDownList ID="state" runat="server" CssClass="input-group">
                     <asp:ListItem>Please Select</asp:ListItem>
                     <asp:ListItem>ACT</asp:ListItem>
-                    <asp:ListItem>New South Wales</asp:ListItem>
-                    <asp:ListItem>Northern Territory</asp:ListItem>
-                    <asp:ListItem>Queensland</asp:ListItem>
-                    <asp:ListItem>South Australia</asp:ListItem>
-                    <asp:ListItem>Tasmania</asp:ListItem>
-                    <asp:ListItem>Western Australia</asp:ListItem>
-                    <asp:ListItem>Victoria</asp:ListItem>
+                    <asp:ListItem>NSW</asp:ListItem>
+                    <asp:ListItem>NT</asp:ListItem>
+                    <asp:ListItem>QLD</asp:ListItem>
+                    <asp:ListItem>SA</asp:ListItem>
+                    <asp:ListItem>TAS</asp:ListItem>
+                    <asp:ListItem>WA</asp:ListItem>
+                    <asp:ListItem>VIC</asp:ListItem>
                 </asp:DropDownList>
                 <asp:RequiredFieldValidator runat="server" CssClass="text-danger" ErrorMessage="The state field is required!" ControlToValidate="state" InitialValue="Please Select"></asp:RequiredFieldValidator>
             </div>
@@ -113,12 +114,13 @@
                 <asp:TextBox runat="server" ID="phone" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="phone"
                     CssClass="text-danger" ErrorMessage="The phone field is required!" Display="Dynamic" />
-                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" CssClass="text-danger" ControlToValidate="phone" ErrorMessage="Must be in the format of 0ndddddddd, where ‘n’ can be ‘2-4’, ‘7-8’, and ‘d’ can be any digit. " ValidationExpression="^[2-4]{1}[7-8]{1}[0-9]{8}$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="RegularExpressionValidator4" runat="server" CssClass="text-danger" ControlToValidate="phone" ErrorMessage="Must be in the format of 0ndddddddd, where ‘n’ can be ‘2-4’, ‘7-8’, and ‘d’ can be any digit. " ValidationExpression="^[0]{1}[2-4,7-8]{1}[0-9]{8}$" Display="Dynamic"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <asp:Button runat="server" OnClick="CreateUser_Click" Text="Register" CssClass="btn btn-default" />
+                <asp:Label ID="validationMessage" runat="server"></asp:Label>
             </div>
         </div>
     </div>
