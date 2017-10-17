@@ -19,6 +19,7 @@ namespace WSD_Project.Tipsters
 
         protected void roundChange(object sender, EventArgs e)
         {
+            fixtureTable.Visible = true;
             // Getting the roundID for sql statement
             for (int i = 1; i <= 9; i++)
             {
@@ -36,10 +37,10 @@ namespace WSD_Project.Tipsters
                     SqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
                     {
-                        gameRow = "<b>" + i + ".  </b>";
+                        gameRow = "<td>" + i + ".  </td> <td>";
                         while (reader.Read())
                         {
-                            gameRow = gameRow + (String)reader["home"] + " (" + (String)reader["homeState"] + ")" + "<b>   VERSUS   </b>" + (String)reader["away"] + " (" + (String)reader["awayState"] + ")";
+                            gameRow = gameRow + (String)reader["home"] + "</td><td>" + (String)reader["homeState"] + "</td><th>VERSUS</th><td>" + (String)reader["away"] + "</td><td>" + (String)reader["awayState"] + "</td>";
                         }
                         // Inputting data into each row
                         if (i == 1)
