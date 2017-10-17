@@ -53,7 +53,7 @@
                 <asp:TextBox runat="server" ID="familyName" CssClass="form-control" />
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="familyName"
                     CssClass="text-danger" ErrorMessage="The family name field is required!" Display="Dynamic" />
-                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="familyName" ErrorMessage="Can only consist of 20 English letters, hyphen and apostrophe!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator runat="server" CssClass="text-danger" ControlToValidate="familyName" ErrorMessage="Can only consist of 20 English letters, hyphen and apostrophe!" ValidationExpression="^[a-zA-Z-']{1,20}$" Display="Dynamic"></asp:RegularExpressionValidator> 
             </div>
         </div>
         <div class="form-group">
@@ -63,7 +63,7 @@
                 <asp:RequiredFieldValidator runat="server" ControlToValidate="DOB"
                     CssClass="text-danger" ErrorMessage="The date of birth field is required!" Display="Dynamic" />
                 <asp:CompareValidator ID="CompareValidator1" CssClass="text-danger" runat="server" ControlToValidate="DOB" ErrorMessage="Date must be in the format: dd/mm/yyyy or dd-mm-yyyy!" Operator="DataTypeCheck" Type="Date" ValidateRequestMode="Inherit" Display="Dynamic"></asp:CompareValidator>
-                <asp:CompareValidator ID="CompareValidator2" CssClass="text-danger" runat="server" ControlToValidate="DOB" ErrorMessage="You must be at least 20 years old!" Operator="LessThanEqual" Type="Date" Display="Dynamic"></asp:CompareValidator>
+                  <asp:CompareValidator ID="CompareValidator2" CssClass="text-danger" runat="server" ControlToValidate="DOB" ErrorMessage="You must be at least 20 years old!" Operator="LessThanEqual" Type="Date" Display="Dynamic"></asp:CompareValidator> 
             </div>
         </div>
         <div class="form-group">

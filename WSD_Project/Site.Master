@@ -46,7 +46,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <p class="mainLogo">AFL Tipping</p>
+                    <p class="mainLogo">AFL Tipping   <%: Context.User.Identity.GetUserName() %></p>
                 </div>
                 <div class="navbar-collapse collapse">
 
@@ -81,8 +81,8 @@
                             <li><a runat="server" href="~/">Home</a></li>
                             <li><a runat="server" href="~/Fixtures">Fixtures</a></li>
                             <li><a runat="server" href="~/MakEtips">Make Tips</a></li>
-                            <li><a runat="server" href="~/MyTips">My Tips</a></li>
-                            <li><a runat="server" href="~/MyRanks">My Ranks</a></li>
+                            <li><a runat="server" href="~/Tipsters/MyTips">My Tips</a></li>
+                            <li><a runat="server" href="~/Tipsters/MyRanks">My Ranks</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
