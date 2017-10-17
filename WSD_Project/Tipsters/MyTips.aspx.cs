@@ -4,20 +4,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Data
-using System.Data.SqlClient
-using System.Web.Configuration
+using System.Data;
+using System.Data.SqlClient;
+using System.Web.Configuration;
 
 namespace WSD_Project.Tipsters
 {
     public partial class MyTips : System.Web.UI.Page
     {
+
         protected void Page_Load(object sender, EventArgs e)
+
+        {
+
+
+        }
+        protected void Page_Init(object sender, EventArgs e)
+
+
         {
             SqlDataSource1.SelectParameters["username"].DefaultValue = Page.User.Identity.Name;
 
-            if (Page.IsValid)
-            {
+           
                 // read the entire connection string from Web.config
                 string connectionString = WebConfigurationManager.ConnectionStrings["AFL_TippingConnectionString"].ConnectionString;
                 // create the connection based on the connection string
@@ -25,22 +33,29 @@ namespace WSD_Project.Tipsters
                 string sql;
                 sql = "SELECT [roundID] FROM [tips] WHERE ([username] = @username)";
                 SqlCommand cmd = new SqlCommand(sql, con);
-                //cmd.Parameters.AddWithValue("@username", txtTitle.Text);
-                //cmd.Parameters.AddWithValue("@Director", txtDirector.Text);
-                //cmd.Parameters.AddWithValue("@DateReleased", DateTime.Parse(txtReleaseDate.Text));
-                using (con)
-                {
+            String paramString = Page.User.Identity.Name;
+            cmd.Parameters.AddWithValue("@username", paramString);
+            using (con)
+            { 
                     con.Open();
                     int rowCount = cmd.ExecuteNonQuery();
-                    if (rowCount > 0)
+            if (rowCount > 0)
+            {
+                  
+                    MultiView1.SetActiveView(View2);
 
-                        MultiView1.ActiveViewIndex = 1;
-
-                    else
-                        MultiView1.ActiveViewIndex = 0;
+                }
+           
+            else if (rowCount <= 0)
+                {
+                   MultiView1.SetActiveView(View1);
                 }
             }
         }
+
+        
+
+
     }
-    
 }
+    
