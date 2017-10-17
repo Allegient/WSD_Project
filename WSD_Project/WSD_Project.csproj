@@ -191,6 +191,7 @@
     <Content Include="Account\ResetPasswordConfirmation.aspx" />
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
+    <Content Include="Administrators\ModifyTips.aspx" />
     <Content Include="App_Data\AFL_Tipping.mdf" />
     <Content Include="App_Data\AFL_Tipping_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -352,6 +353,13 @@
     </Compile>
     <Compile Include="Account\VerifyPhoneNumber.aspx.designer.cs">
       <DependentUpon>VerifyPhoneNumber.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrators\ModifyTips.aspx.cs">
+      <DependentUpon>ModifyTips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrators\ModifyTips.aspx.designer.cs">
+      <DependentUpon>ModifyTips.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
