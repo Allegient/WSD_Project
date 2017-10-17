@@ -57,6 +57,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DataVisualization">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Web.DataVisualization.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
@@ -195,6 +198,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Administrators\ModifyTips.aspx" />
+    <Content Include="Administrators\Statistics.aspx" />
     <Content Include="App_Data\AFL_Tipping.mdf" />
     <Content Include="App_Data\AFL_Tipping_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -365,6 +369,13 @@
     </Compile>
     <Compile Include="Administrators\ModifyTips.aspx.designer.cs">
       <DependentUpon>ModifyTips.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrators\Statistics.aspx.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrators\Statistics.aspx.designer.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
