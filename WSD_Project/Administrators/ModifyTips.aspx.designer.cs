@@ -13,6 +13,15 @@ namespace WSD_Project.Administrators {
     public partial class ModifyTips {
         
         /// <summary>
+        /// UpdatePanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        
+        /// <summary>
         /// ListView1 control.
         /// </summary>
         /// <remarks>
