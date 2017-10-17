@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,11 +12,11 @@ namespace WSD_Project.Administrators
     {
         private void GetChartTypes()
         {
-
-            DropDownList1.Items.Add("Column");
-            DropDownList1.Items.Add("Pie");
-            DropDownList1.Items.Add("Line");
-
+           
+                DropDownList1.Items.Add("Column");
+                DropDownList1.Items.Add("Pie");
+                DropDownList1.Items.Add("Line");
+           
         }
 
         protected void Page_Load(object sender, EventArgs e)
