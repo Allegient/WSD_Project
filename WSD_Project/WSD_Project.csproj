@@ -195,6 +195,7 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="Administrators\ModifyTips.aspx" />
+    <Content Include="Administrators\Statistics.aspx" />
     <Content Include="App_Data\AFL_Tipping.mdf" />
     <Content Include="App_Data\AFL_Tipping_log.ldf">
       <DependentUpon>Database1.mdf</DependentUpon>
@@ -246,6 +247,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Tipsters\Fixtures.aspx" />
+    <Content Include="Tipsters\MakeTips.aspx" />
     <Content Include="Tipsters\MyTips.aspx" />
     <Content Include="Tipsters\ShowRanks.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -366,6 +368,13 @@
     <Compile Include="Administrators\ModifyTips.aspx.designer.cs">
       <DependentUpon>ModifyTips.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Administrators\Statistics.aspx.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrators\Statistics.aspx.designer.cs">
+      <DependentUpon>Statistics.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -417,6 +426,13 @@
     </Compile>
     <Compile Include="Tipsters\Fixtures.aspx.designer.cs">
       <DependentUpon>Fixtures.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tipsters\MakeTips.aspx.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tipsters\MakeTips.aspx.designer.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tipsters\MyTips.aspx.cs">
       <DependentUpon>MyTips.aspx</DependentUpon>
