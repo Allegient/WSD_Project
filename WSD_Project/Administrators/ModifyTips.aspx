@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ModifyTips.aspx.cs" Inherits="WSD_Project.Administrators.ModifyTips" %>
+﻿<%@ Page Title="Modify Tips" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ModifyTips.aspx.cs" Inherits="WSD_Project.Administrators.ModifyTips" %>
 
 
 

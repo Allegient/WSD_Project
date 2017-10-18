@@ -15,21 +15,19 @@ namespace WSD_Project.Tipsters
         protected void Page_Load(object sender, EventArgs e)
         {
             SqlDataSource1.SelectParameters["username"].DefaultValue = Page.User.Identity.Name; // Finding username of user to check rounds
-           
+
             if (DropDownList2.Items.Count == 0)
             {
                 selectTip.Visible = false;
                 noTips.Visible = true;
-
             }
             else
             {
                 noTips.Visible = false;
                 selectTip.Visible = true;
+            }
 
-            } 
-
-        } 
+        }
 
         protected void roundResult(object sender, EventArgs e)
         {

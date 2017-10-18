@@ -250,6 +250,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Tipsters\Fixtures.aspx" />
+    <Content Include="Tipsters\MakeTips.aspx" />
     <Content Include="Tipsters\MyTips.aspx" />
     <Content Include="Tipsters\ShowRanks.aspx" />
     <Content Include="ViewSwitcher.ascx" />
@@ -430,6 +431,13 @@
     </Compile>
     <Compile Include="Tipsters\Fixtures.aspx.designer.cs">
       <DependentUpon>Fixtures.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tipsters\MakeTips.aspx.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tipsters\MakeTips.aspx.designer.cs">
+      <DependentUpon>MakeTips.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tipsters\MyTips.aspx.cs">
       <DependentUpon>MyTips.aspx</DependentUpon>

@@ -21,7 +21,7 @@ namespace WSD_Project.Tipsters
         {
             fixtureTable.Visible = true;
             // Getting the roundID for sql statement
-            for (int i = 1; i <= 9; i++)
+            for (int i = 1; i <= 9; i++)    // Loop to repeat for all 9 games
             {
                 String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
                 SqlConnection con = new SqlConnection(connectionString);
