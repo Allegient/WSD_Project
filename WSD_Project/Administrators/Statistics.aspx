@@ -11,7 +11,7 @@
    <br />
 
     <br />
-    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+    <asp:UpdatePanel ID="Up1" runat="server" updatemode="Conditional">
         <ContentTemplate>
             <p>
                 Select a chart type:</p>
@@ -46,6 +46,42 @@
     </asp:UpdatePanel>
     <br />
     <br />
+    <asp:UpdatePanel ID="Up2" runat="server" updatemode="Conditional">
+
+
+
+        <ContentTemplate>
+            Select a chart type:<br />
+            <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
+            </asp:DropDownList>
+            <br />
+            <br />
+            Select 2D or 3D charts:<br />
+            <asp:DropDownList ID="DropDownList4" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList4_SelectedIndexChanged">
+                <asp:ListItem Value="2D">2D Chart</asp:ListItem>
+                <asp:ListItem Value="3D">3D Chart</asp:ListItem>
+            </asp:DropDownList>
+            <br />
+            <br />
+            <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2">
+                <Series>
+                    <asp:Series Name="Series2" XValueMember="weekday" YValueMembers="NumberOfTips">
+                    </asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea2">
+                        <AxisX Title="Weekday">
+                        </AxisX>
+                        <AxisY Title="Number of Tips">
+                        </AxisY>
+                    </asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+            <br />
+            <br />
+        </ContentTemplate>
+    </asp:UpdatePanel>
+    <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" SelectCommand="SELECT DATENAME(Weekday, tiptime) AS 'weekday', COUNT(*) AS 'NumberOfTips' FROM tips GROUP BY DATENAME(Weekday, tiptime) ORDER BY CASE datename(weekday , tiptime) WHEN 'Monday' THEN 1 WHEN 'Tuesday' THEN 2 WHEN 'Wednesday' THEN 3 WHEN 'Thursday' THEN 4 WHEN 'Friday' THEN 5 END"></asp:SqlDataSource>
     <br />
             
     <br />

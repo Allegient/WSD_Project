@@ -16,6 +16,9 @@ namespace WSD_Project.Administrators
             DropDownList1.Items.Add("Column");
             DropDownList1.Items.Add("Pie");
             DropDownList1.Items.Add("Line");
+            DropDownList3.Items.Add("Column");
+            DropDownList3.Items.Add("Pie");
+            DropDownList3.Items.Add("Line");
 
         }
 
@@ -50,6 +53,32 @@ namespace WSD_Project.Administrators
                 Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
             }
 
+            String selectedType2 = DropDownList1.SelectedValue;
+            Chart1.Series["Series1"].ChartType = (SeriesChartType)Enum.Parse(typeof(SeriesChartType), selectedType2);
+
+        }
+
+        protected void DropDownList3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String selectedType = DropDownList3.SelectedValue;          
+            Chart2.Series["Series2"].ChartType = (SeriesChartType)Enum.Parse(typeof(SeriesChartType), selectedType);
+
+        }
+
+        protected void DropDownList4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            String selectedType = DropDownList4.SelectedValue;           
+            if (selectedType == "2D")
+            {               
+                Chart2.ChartAreas["ChartArea2"].Area3DStyle.Enable3D = false;            
+            }
+            else if (selectedType == "3D")
+            {                
+                Chart2.ChartAreas["ChartArea2"].Area3DStyle.Enable3D = true;
+            }
+
+            String selectedType2 = DropDownList3.SelectedValue;
+            Chart2.Series["Series2"].ChartType = (SeriesChartType)Enum.Parse(typeof(SeriesChartType), selectedType2);
         }
     }
 }
