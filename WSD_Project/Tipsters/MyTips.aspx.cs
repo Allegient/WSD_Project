@@ -18,7 +18,7 @@ namespace WSD_Project.Tipsters
 
             if (DropDownList2.Items.Count == 0)
             {
-                selectTip.Visible = false;
+                selectTip.Visible = true;
                 noTips.Visible = true;
             }
             else
@@ -43,7 +43,7 @@ namespace WSD_Project.Tipsters
                     " = 0 THEN 'Draws with' WHEN results.game" + i +
                     " < 0 THEN 'Loses to' END AS Result, fixtures.away" + i +
                     " AS away, ABS(results.game" + i +
-                    ") AS margin from fixtures INNER JOIN results on fixtures.roundID = results.roundID WHERE fixtures.roundID = " + i;
+                    ") AS margin from fixtures INNER JOIN results on fixtures.roundID = results.roundID WHERE fixtures.roundID = @round";
                 SqlCommand cmd = new SqlCommand(sql, con);
                 String roundSelectString = DropDownList2.SelectedValue;
                 cmd.Parameters.AddWithValue("@round", roundSelectString);
