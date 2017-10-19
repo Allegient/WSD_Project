@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <h1>Please select the round of the fixture you would like to view</h1>
-    <!-- Retreiving roudd IDs -->
+    <!-- Retreiving round IDs -->
     <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1" DataTextField="roundID" DataValueField="roundID" Height="29px" Width="48px"></asp:DropDownList>
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" SelectCommand="SELECT [roundID] FROM [fixtures]"></asp:SqlDataSource>
     <asp:Button runat="server" OnClick="roundChange" Text="Submit" />

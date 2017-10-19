@@ -14,274 +14,168 @@
             </asp:SqlDataSource>
             <br />
             <br />
-            <asp:Button ID="button1" runat="server" CommandName="NextView" Text="Make Tip" />
+            <asp:Button ID="button1" runat="server" CommandName="NextView" Text="Make Tip" CssClass="btn btn-default" />
         </asp:View>
         <asp:View ID="View2" runat="server" OnActivate="View2_Activate">
             <br />
             <br />
-            <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" DeleteCommand="DELETE FROM [tips] WHERE [tipsetID] = @tipsetID" InsertCommand="INSERT INTO [tips] ([game3], [game5], [game2], [game4], [game9], [game1], [game8], [game6], [game7], [roundID]) VALUES (@game3, @game5, @game2, @game4, @game9, @game1, @game8, @game6, @game7, @roundID)" SelectCommand="SELECT [tipsetID], [game3], [game5], [game2], [game4], [game9], [game1], [game8], [game6], [game7], [roundID] FROM [tips] WHERE (([roundID] = @roundID) AND ([username] = @username))" UpdateCommand="UPDATE [tips] SET [game3] = @game3, [game5] = @game5, [game2] = @game2, [game4] = @game4, [game9] = @game9, [game1] = @game1, [game8] = @game8, [game6] = @game6, [game7] = @game7, [roundID] = @roundID WHERE [tipsetID] = @tipsetID">
-                <DeleteParameters>
-                    <asp:Parameter Name="tipsetID" Type="Int32" />
-                </DeleteParameters>
-                <InsertParameters>
-                    <asp:Parameter Name="game3" Type="Int32" />
-                    <asp:Parameter Name="game5" Type="Int32" />
-                    <asp:Parameter Name="game2" Type="Int32" />
-                    <asp:Parameter Name="game4" Type="Int32" />
-                    <asp:Parameter Name="game9" Type="Int32" />
-                    <asp:Parameter Name="game1" Type="Int32" />
-                    <asp:Parameter Name="game8" Type="Int32" />
-                    <asp:Parameter Name="game6" Type="Int32" />
-                    <asp:Parameter Name="game7" Type="Int32" />
-                    <asp:Parameter Name="roundID" Type="Int32" />
-                </InsertParameters>
-                <SelectParameters>
-                    <asp:ControlParameter ControlID="DropDownList1" Name="roundID" PropertyName="SelectedValue" Type="Int32" />
-                    <asp:Parameter Name="username" Type="String" />
-                </SelectParameters>
-                <UpdateParameters>
-                    <asp:Parameter Name="game3" Type="Int32" />
-                    <asp:Parameter Name="game5" Type="Int32" />
-                    <asp:Parameter Name="game2" Type="Int32" />
-                    <asp:Parameter Name="game4" Type="Int32" />
-                    <asp:Parameter Name="game9" Type="Int32" />
-                    <asp:Parameter Name="game1" Type="Int32" />
-                    <asp:Parameter Name="game8" Type="Int32" />
-                    <asp:Parameter Name="game6" Type="Int32" />
-                    <asp:Parameter Name="game7" Type="Int32" />
-                    <asp:Parameter Name="roundID" Type="Int32" />
-                    <asp:Parameter Name="tipsetID" Type="Int32" />
-                </UpdateParameters>
-            </asp:SqlDataSource>
-            <asp:ListView ID="ListView1" runat="server" DataKeyNames="tipsetID" DataSourceID="SqlDataSource2" OnSelectedIndexChanged="ListView1_SelectedIndexChanged">
-                <AlternatingItemTemplate>
-                    <tr style="background-color:#FFF8DC;">
-                        <td>
-                            <asp:Label ID="tipsetIDLabel" runat="server" Text='<%# Eval("tipsetID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game3Label" runat="server" Text='<%# Eval("game3") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game5Label" runat="server" Text='<%# Eval("game5") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game2Label" runat="server" Text='<%# Eval("game2") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game4Label" runat="server" Text='<%# Eval("game4") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game1Label" runat="server" Text='<%# Eval("game1") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game8Label" runat="server" Text='<%# Eval("game8") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game6Label" runat="server" Text='<%# Eval("game6") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game7Label" runat="server" Text='<%# Eval("game7") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="roundIDLabel" runat="server" Text='<%# Eval("roundID") %>' />
-                        </td>
-                    </tr>
-                </AlternatingItemTemplate>
-                <EditItemTemplate>
-                    <tr style="background-color:#008A8C;color: #FFFFFF;">
-                        <td>
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
-                        </td>
-                        <td>
-                            <asp:Label ID="tipsetIDLabel1" runat="server" Text='<%# Eval("tipsetID") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game3TextBox" runat="server" Text='<%# Bind("game3") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game5TextBox" runat="server" Text='<%# Bind("game5") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game2TextBox" runat="server" Text='<%# Bind("game2") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game4TextBox" runat="server" Text='<%# Bind("game4") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game9TextBox" runat="server" Text='<%# Bind("game9") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game1TextBox" runat="server" Text='<%# Bind("game1") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game8TextBox" runat="server" Text='<%# Bind("game8") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game6TextBox" runat="server" Text='<%# Bind("game6") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game7TextBox" runat="server" Text='<%# Bind("game7") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="roundIDTextBox" runat="server" Text='<%# Bind("roundID") %>' />
-                        </td>
-                    </tr>
-                </EditItemTemplate>
-                <EmptyDataTemplate>
-                    <table runat="server" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;">
-                        <tr>
-                            <td>No data was returned.</td>
-                        </tr>
-                    </table>
-                </EmptyDataTemplate>
-                <InsertItemTemplate>
-                    <tr style="">
-                        <td>
-                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
-                            <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
-                        </td>
-                        <td>
-                            &nbsp;</td>
-                        <td>
-                            <asp:TextBox ID="game3TextBox" runat="server" Text='<%# Bind("game3") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game5TextBox" runat="server" Text='<%# Bind("game5") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game2TextBox" runat="server" Text='<%# Bind("game2") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game4TextBox" runat="server" Text='<%# Bind("game4") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game9TextBox" runat="server" Text='<%# Bind("game9") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game1TextBox" runat="server" Text='<%# Bind("game1") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game8TextBox" runat="server" Text='<%# Bind("game8") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game6TextBox" runat="server" Text='<%# Bind("game6") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="game7TextBox" runat="server" Text='<%# Bind("game7") %>' />
-                        </td>
-                        <td>
-                            <asp:TextBox ID="roundIDTextBox" runat="server" Text='<%# Bind("roundID") %>' />
-                        </td>
-                    </tr>
-                </InsertItemTemplate>
-                <ItemTemplate>
-                    <tr style="background-color:#DCDCDC;color: #000000;">
-                        <td>
-                            <asp:Label ID="tipsetIDLabel" runat="server" Text='<%# Eval("tipsetID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game3Label" runat="server" Text='<%# Eval("game3") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game5Label" runat="server" Text='<%# Eval("game5") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game2Label" runat="server" Text='<%# Eval("game2") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game4Label" runat="server" Text='<%# Eval("game4") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game1Label" runat="server" Text='<%# Eval("game1") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game8Label" runat="server" Text='<%# Eval("game8") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game6Label" runat="server" Text='<%# Eval("game6") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game7Label" runat="server" Text='<%# Eval("game7") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="roundIDLabel" runat="server" Text='<%# Eval("roundID") %>' />
-                        </td>
-                    </tr>
-                </ItemTemplate>
-                <LayoutTemplate>
-                    <table runat="server">
-                        <tr runat="server">
-                            <td runat="server">
-                                <table id="itemPlaceholderContainer" runat="server" border="1" style="background-color: #FFFFFF;border-collapse: collapse;border-color: #999999;border-style:none;border-width:1px;font-family: Verdana, Arial, Helvetica, sans-serif;">
-                                    <tr runat="server" style="background-color:#DCDCDC;color: #000000;">
-                                        <th runat="server">tipsetID</th>
-                                        <th runat="server">game3</th>
-                                        <th runat="server">game5</th>
-                                        <th runat="server">game2</th>
-                                        <th runat="server">game4</th>
-                                        <th runat="server">game9</th>
-                                        <th runat="server">game1</th>
-                                        <th runat="server">game8</th>
-                                        <th runat="server">game6</th>
-                                        <th runat="server">game7</th>
-                                        <th runat="server">roundID</th>
-                                    </tr>
-                                    <tr id="itemPlaceholder" runat="server">
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                        <tr runat="server">
-                            <td runat="server" style="text-align: center;background-color: #CCCCCC;font-family: Verdana, Arial, Helvetica, sans-serif;color: #000000;"></td>
-                        </tr>
-                    </table>
-                </LayoutTemplate>
-                <SelectedItemTemplate>
-                    <tr style="background-color:#008A8C;font-weight: bold;color: #FFFFFF;">
-                        <td>
-                            <asp:Label ID="tipsetIDLabel" runat="server" Text='<%# Eval("tipsetID") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game3Label" runat="server" Text='<%# Eval("game3") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game5Label" runat="server" Text='<%# Eval("game5") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game2Label" runat="server" Text='<%# Eval("game2") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game4Label" runat="server" Text='<%# Eval("game4") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game1Label" runat="server" Text='<%# Eval("game1") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game8Label" runat="server" Text='<%# Eval("game8") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game6Label" runat="server" Text='<%# Eval("game6") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="game7Label" runat="server" Text='<%# Eval("game7") %>' />
-                        </td>
-                        <td>
-                            <asp:Label ID="roundIDLabel" runat="server" Text='<%# Eval("roundID") %>' />
-                        </td>
-                    </tr>
-                </SelectedItemTemplate>
-            </asp:ListView>
+
+            <!-- Table for user to input their tips along with drop down box, textbox and validation -->
+            <table style="width: 50%; text-align: left; padding: 8px;">
+                <tr>
+                    <th>Game Number</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Match Result</th>
+                    <th>Predicted Margin</th>
+                </tr>
+                <tr>
+                    <asp:Label ID="game1" runat="server"></asp:Label>
+                    <td>
+                        <asp:DropDownList ID="game1Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game1Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game1Margin" runat="server"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" CssClass="text-danger" ControlToValidate="game1Margin" ErrorMessage="<br / >Must be a number between 0-200!" ValidationExpression="^[0-9]$|^[0-9][0-9]$|^200$" Display="Dynamic"></asp:RegularExpressionValidator>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game2" runat="server"></asp:Label>
+                    <td>
+                        <asp:DropDownList ID="game2Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game2Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game2Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game3" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game3Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game3Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game3Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game4" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game4Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game4Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game4Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game5" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game5Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game5Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game5Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game6" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game6Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game6Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game6Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game7" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game7Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game7Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game7Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game8" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game8Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game8Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game8Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <asp:Label ID="game9" runat="server"></asp:Label>
+
+                    <td>
+                        <asp:DropDownList ID="game9Drop" runat="server">
+                            <asp:ListItem>Please Select</asp:ListItem>
+                            <asp:ListItem>Win</asp:ListItem>
+                            <asp:ListItem>Draw</asp:ListItem>
+                            <asp:ListItem>Lose</asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" CssClass="text-danger" ErrorMessage="<br />Please select the result!" ControlToValidate="game9Drop" InitialValue="Please Select" Display="Dynamic"></asp:RequiredFieldValidator>
+                    </td>
+                    <td>
+                        <asp:TextBox ID="game9Margin" runat="server"></asp:TextBox>
+                    </td>
+                </tr>
+            </table>
+            <asp:Button ID="Button2" runat="server" Text="Select Round" CommandName="SwitchViewByID" CommandArgument="View1" CssClass="btn btn-default" />
+            <asp:Button runat="server" OnClick="submitTip" Text="Submit" CssClass="btn btn-default" />
+            <asp:Label ID="validationMessage" runat="server"></asp:Label>
         </asp:View>
     </asp:MultiView>
 </asp:Content>
