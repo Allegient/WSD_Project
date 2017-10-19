@@ -16,20 +16,31 @@ namespace WSD_Project.Tipsters
         {
             SqlDataSource1.SelectParameters["username"].DefaultValue = Page.User.Identity.Name; // Finding username of user to check rounds
 
-            if (DropDownList2.Items.Count == 0)
+            // Checking if the user has tipped in all 20 rounds 
+            String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlCommand cmd = new SqlCommand("SELECT [roundID] FROM [fixtures] EXCEPT SELECT [roundID] FROM [tips] WHERE ([username] = @username)", con);
+            cmd.Parameters.AddWithValue("@username", Page.User.Identity.Name);
+            using (con)
             {
-                selectTip.Visible = true;
-                noTips.Visible = true;
-            }
-            else
-            {
-                noTips.Visible = false;
-                selectTip.Visible = true;
+                con.Open();
+                Object result = cmd.ExecuteScalar();
+                con.Close();
+                if (result != null) // If there are results it means user still have rounds to tip
+                {
+                    selectTip.Visible = false;
+                    noTips.Visible = true;
+                }
+                else
+                {
+                    selectTip.Visible = true;
+                    noTips.Visible = false;
+                }
+
             }
 
         }
-
-        protected void roundResult(object sender, EventArgs e)
+            protected void roundResult(object sender, EventArgs e)
         {
             tipsTable.Visible = true;
             // Getting the roundID for sql statement
