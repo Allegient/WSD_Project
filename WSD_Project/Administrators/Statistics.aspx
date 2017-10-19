@@ -4,10 +4,12 @@
 
 <asp:Content ID="Content5" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!-- NOTE FOR CHRIS: Add titles to chart, fix up the 2D and 3D (I have given my code in the aspx.cs page) 
+        switch with chart pattern everything else looks good -->
 
 
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" SelectCommand="SELECT roundID AS RoundID, COUNT(*) AS NumberOfTips FROM tips WHERE (roundID = 1) OR (roundID = 2) OR (roundID = 3) OR (roundID = 4) OR (roundID = 5) OR (roundID = 6) OR (roundID = 7) OR (roundID = 8) OR (roundID = 9) OR (roundID = 10) OR (roundID = 11) OR (roundID = 12) OR (roundID = 13) OR (roundID = 14) OR (roundID = 15) OR (roundID = 16) OR (roundID = 17) OR (roundID = 18) OR (roundID = 19) OR (roundID = 20) GROUP BY roundID"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" SelectCommand="SELECT roundID AS RoundID, COUNT(*) AS NumberOfTips FROM tips GROUP BY roundID"></asp:SqlDataSource>
    <br />
 
     <br />
@@ -70,7 +72,7 @@
                 </Series>
                 <ChartAreas>
                     <asp:ChartArea Name="ChartArea2">
-                        <AxisX Title="Weekday">
+                        <AxisX Title="Day of the week">
                         </AxisX>
                         <AxisY Title="Number of Tips">
                         </AxisY>

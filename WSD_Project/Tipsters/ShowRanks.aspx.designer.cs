@@ -13,6 +13,15 @@ namespace WSD_Project.Tipsters {
     public partial class ShowRanks {
         
         /// <summary>
+        /// title control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl title;
+        
+        /// <summary>
         /// noTips control.
         /// </summary>
         /// <remarks>
@@ -31,13 +40,13 @@ namespace WSD_Project.Tipsters {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
-        /// selectTip control.
+        /// roundSeletion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl selectTip;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl roundSeletion;
         
         /// <summary>
         /// DropDownList1 control.
@@ -58,93 +67,39 @@ namespace WSD_Project.Tipsters {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataSource1;
         
         /// <summary>
-        /// tipsTable control.
+        /// UpdatePanel1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl tipsTable;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// game1 control.
+        /// submissionButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl submissionButton;
         
         /// <summary>
-        /// game2 control.
+        /// rankingTable control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rankingTable;
         
         /// <summary>
-        /// game3 control.
+        /// Rankings control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game3;
-        
-        /// <summary>
-        /// game4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game4;
-        
-        /// <summary>
-        /// game5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game5;
-        
-        /// <summary>
-        /// game6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game6;
-        
-        /// <summary>
-        /// game7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game7;
-        
-        /// <summary>
-        /// game8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game8;
-        
-        /// <summary>
-        /// game9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label game9;
+        protected global::System.Web.UI.WebControls.Label Rankings;
     }
 }

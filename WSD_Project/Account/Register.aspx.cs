@@ -15,9 +15,8 @@ namespace WSD_Project.Account
     {
         protected void Page_Load()
         {
-
+            // Retrieving the current date minus 20 years for DOB validation
             CompareValidator2.ValueToCompare = DateTime.Now.AddYears(-20).ToShortDateString();
-            String test = DateTime.Now.AddYears(20).ToShortDateString();
         }
 
         protected void CreateUser_Click(object sender, EventArgs e)

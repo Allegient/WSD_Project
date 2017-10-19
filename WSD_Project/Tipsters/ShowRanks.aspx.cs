@@ -19,95 +19,54 @@ namespace WSD_Project.Tipsters
             // Checking if the user has tipped in all 20 rounds 
             String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
             SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT [roundID] FROM [fixtures] EXCEPT SELECT [roundID] FROM [tips] WHERE ([username] = @username)", con);
+            SqlCommand cmd = new SqlCommand("SELECT [roundID] FROM [tips] WHERE ([username] = @username)", con);
             cmd.Parameters.AddWithValue("@username", Page.User.Identity.Name);
             using (con)
             {
                 con.Open();
                 Object result = cmd.ExecuteScalar();
                 con.Close();
-                if (result != null) // If there are results it means user still have rounds to tip
+                if (result != null) // If there are results it means the user tipped
                 {
-                    selectTip.Visible = false;
-                    noTips.Visible = true;
+                    noTips.Visible = false;
                 }
                 else
                 {
-                    selectTip.Visible = true;
-                    noTips.Visible = false;
+                    title.Visible = false;
+                    roundSeletion.Visible = false;
+                    submissionButton.Visible = false;
                 }
-
             }
-
         }
-        protected void roundResult(object sender, EventArgs e)
+
+        protected void rankResult(object sender, EventArgs e)
         {
-            tipsTable.Visible = true;
-            // Getting the roundID for sql statement
-            for (int i = 1; i <= 9; i++)
+            // SQLquery for rankings
+            rankingTable.Visible = true;
+            String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
+            SqlConnection con = new SqlConnection(connectionString);
+            String sql = "SELECT tipsters.gname, tipsters.sname, RANK() OVER (ORDER BY (ABS(tips.game1 - results.game1) + ABS(tips.game2 - results.game2) + ABS(tips.game3 - results.game3) + ABS(tips.game4 - results.game4) + ABS(tips.game5 - results.game5) + ABS(tips.game6 - results.game6) + ABS(tips.game7 - results.game7) + ABS(tips.game8 - results.game8) + ABS(tips.game9 - results.game9)) ASC) AS Rank, (ABS(tips.game1 - results.game1) + ABS(tips.game2 - results.game2) + ABS(tips.game3 - results.game3) + ABS(tips.game4 - results.game4) + ABS(tips.game5 - results.game5) + ABS(tips.game6 - results.game6) + ABS(tips.game7 - results.game7) + ABS(tips.game8 - results.game8) + ABS(tips.game9 - results.game9)) AS 'errorpoints' from tips INNER JOIN tipsters ON tips.username = tipsters.username INNER JOIN results ON tips.roundID = results.roundID WHERE tips.roundID = @round";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            String roundSelectString = DropDownList1.SelectedValue;
+            cmd.Parameters.AddWithValue("@round", roundSelectString);
+            using (con)
             {
-                String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
-                SqlConnection con = new SqlConnection(connectionString);
-                String sql = "select tipsters.gname, tipsters.sname, ABS(tips.game1 - results.game1) AS 'errorpoints' from tips INNER JOIN tipsters ON tips.username = tipsters.username INNER JOIN results ON tips.roundID = results.roundID WHERE tips.roundID = 2";
-                SqlCommand cmd = new SqlCommand(sql, con);
-                String roundSelectString = DropDownList1.SelectedValue;
-                cmd.Parameters.AddWithValue("@round", roundSelectString);
-
-                using (con)
+                con.Open();
+                String gameRow = null;
+                String fullRank = null;
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
                 {
-                    con.Open();
-                    String gameRow;
-                    SqlDataReader reader = cmd.ExecuteReader();
-                    if (reader.HasRows)
+                    // Creating a table with the rankings
+                    while (reader.Read())
                     {
-                        gameRow = "<td>" + i + ".  </td> <td>";
-                        while (reader.Read())
-                        {
-                            gameRow = gameRow + (String)reader["gname"] + "</td><td>" + (String)reader["sname"] + "</td><td>" + reader["errorpoints"].ToString() + "</td>";
-                        }
-                        // Inputting data into each row
-                        if (i == 1)
-                        {
-                            game1.Text = gameRow;
-                        }
-                        if (i == 2)
-                        {
-                            game2.Text = gameRow;
-                        }
-                        if (i == 3)
-                        {
-                            game3.Text = gameRow;
-                        }
-                        if (i == 4)
-                        {
-                            game4.Text = gameRow;
-                        }
-                        if (i == 5)
-                        {
-                            game5.Text = gameRow;
-                        }
-                        if (i == 6)
-                        {
-                            game6.Text = gameRow;
-                        }
-                        if (i == 7)
-                        {
-                            game7.Text = gameRow;
-                        }
-                        if (i == 8)
-                        {
-                            game8.Text = gameRow;
-                        }
-                        if (i == 9)
-                        {
-                            game9.Text = gameRow;
-                        }
+                        gameRow = "<tr><td>" + reader["Rank"].ToString() + "</td><td>" + (String)reader["gname"] + "</td><td>" + (String)reader["sname"] + "</td><td>" + reader["errorpoints"].ToString() + "</td></tr>";
+                        fullRank = fullRank + gameRow;
+                        //          System.Diagnostics.Debug.WriteLine(gameRow + "@@@@@@@@@@@");
                     }
+                    Rankings.Text = fullRank;
                 }
-
             }
-
-
         }
     }
 }

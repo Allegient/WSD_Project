@@ -16,31 +16,31 @@ namespace WSD_Project.Tipsters
         {
             SqlDataSource1.SelectParameters["username"].DefaultValue = Page.User.Identity.Name; // Finding username of user to check rounds
 
-            // Checking if the user has tipped in all 20 rounds 
+            // Checking if the user has tipped
             String connectionString = WebConfigurationManager.ConnectionStrings["AFL_Tipping"].ConnectionString;
             SqlConnection con = new SqlConnection(connectionString);
-            SqlCommand cmd = new SqlCommand("SELECT [roundID] FROM [fixtures] EXCEPT SELECT [roundID] FROM [tips] WHERE ([username] = @username)", con);
+            SqlCommand cmd = new SqlCommand("SELECT [roundID] FROM [tips] WHERE ([username] = @username)", con);
             cmd.Parameters.AddWithValue("@username", Page.User.Identity.Name);
             using (con)
             {
                 con.Open();
                 Object result = cmd.ExecuteScalar();
                 con.Close();
-                if (result != null) // If there are results it means user still have rounds to tip
-                {
-                    selectTip.Visible = false;
-                    noTips.Visible = true;
-                }
-                else
+                if (result != null) // If there are results it means there are tips made
                 {
                     selectTip.Visible = true;
                     noTips.Visible = false;
                 }
-
+                else
+                {
+                    selectTip.Visible = false;
+                    noTips.Visible = true;
+                    title.Visible = false;
+                    submitButton.Visible = false;
+                }
             }
-
         }
-            protected void roundResult(object sender, EventArgs e)
+        protected void roundResult(object sender, EventArgs e)
         {
             tipsTable.Visible = true;
             // Getting the roundID for sql statement
@@ -69,7 +69,7 @@ namespace WSD_Project.Tipsters
                         gameRow = "<td>" + i + ".  </td> <td>";
                         while (reader.Read())
                         {
-                            gameRow = gameRow + (String)reader["home"] + "</td><td>" + (String)reader["result"] + "</td><td>" + (String)reader["away"] + "</td><td>" + reader["margin"].ToString() + "</td>";
+                            gameRow = gameRow + (String)reader["home"] + "</td><td>" + (String)reader["result"] + "</td><td>" + (String)reader["away"] + "</td><td>" + "by " + reader["margin"].ToString() + " points</td>";
                         }
                         // Inputting data into each row
                         if (i == 1)
@@ -110,11 +110,7 @@ namespace WSD_Project.Tipsters
                         }
                     }
                 }
-
             }
-
-
         }
-
     }
 }

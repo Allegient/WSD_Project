@@ -29,7 +29,6 @@ namespace WSD_Project.Tipsters
                 SqlCommand cmd = new SqlCommand(sql, con);
                 String roundSelectString = DropDownList1.SelectedValue;
                 cmd.Parameters.AddWithValue("@round", roundSelectString);
-
                 using (con)
                 {
                     con.Open();
@@ -81,9 +80,7 @@ namespace WSD_Project.Tipsters
                         }
                     }
                 }
-
             }
-
         }
     }
 }
