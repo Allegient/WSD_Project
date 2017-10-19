@@ -82,7 +82,7 @@
                             <li><a runat="server" href="~/Tipsters/Fixtures">Fixtures</a></li>
                             <li><a runat="server" href="~/Tipsters/Maketips">Make Tips</a></li>
                             <li><a runat="server" href="~/Tipsters/MyTips">My Tips</a></li>
-                            <li><a runat="server" href="~/Tipsters/MyRanks">My Ranks</a></li>
+                            <li><a runat="server" href="~/Tipsters/ShowRanks">My Ranks</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
