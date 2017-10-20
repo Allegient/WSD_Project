@@ -12,7 +12,7 @@
     <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" SelectCommand="SELECT roundID AS RoundID, COUNT(*) AS NumberOfTips FROM tips GROUP BY roundID"></asp:SqlDataSource>
    <br />
 
-    <br />
+   <br />
     <asp:UpdatePanel ID="Up1" runat="server" updatemode="Conditional">
         <ContentTemplate>
             <p>
@@ -29,6 +29,9 @@
             <br />
             <br />
             <asp:Chart ID="Chart1" runat="server" DataSourceID="SqlDataSource1">
+                <Titles>
+                    <asp:Title Font="Arial, 11pt, style=Bold" Text="The Number of Tip Sets for each round" TextStyle="Default"></asp:Title>
+                </Titles>
                 <series>
                     <asp:Series Name="Series1" XValueMember="RoundID" YValueMembers="NumberOfTips">
                     </asp:Series>
@@ -51,7 +54,6 @@
     <asp:UpdatePanel ID="Up2" runat="server" updatemode="Conditional">
 
 
-
         <ContentTemplate>
             Select a chart type:<br />
             <asp:DropDownList ID="DropDownList3" runat="server" AutoPostBack="true" OnSelectedIndexChanged="DropDownList3_SelectedIndexChanged">
@@ -66,6 +68,9 @@
             <br />
             <br />
             <asp:Chart ID="Chart2" runat="server" DataSourceID="SqlDataSource2">
+                <Titles>
+                    <asp:Title Font="Arial, 11pt, style=Bold" Text="Number of Tips sets Submitted Each Week Day" TextStyle="Default"></asp:Title>
+                </Titles>
                 <Series>
                     <asp:Series Name="Series2" XValueMember="weekday" YValueMembers="NumberOfTips">
                     </asp:Series>

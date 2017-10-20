@@ -60,12 +60,15 @@
                         <td>
                             <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
                         </td>
+                        <td>
+                            <asp:Label ID="tiptime" runat="server" Text='<%# Eval("tiptime") %>' />
+                        </td>
                     </tr>
                 </AlternatingItemTemplate>
                 <EditItemTemplate>
                     <tr style="background-color: #008A8C; color: #FFFFFF;">
                         <td>
-                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" />
+                            <asp:Button ID="UpdateButton" runat="server" CommandName="Update" Text="Update" ValidationGroup="EditGroup" />
                             <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Cancel" />
                         </td>
                         <td>
@@ -136,6 +139,11 @@
                             <asp:RegularExpressionValidator runat="server" ErrorMessage="Please enter a number from -200 to 200" ValidationGroup="EditGroup"
                                 ValidationExpression="^-[0-9]$|^-[0-9][0-9]$|^-[0-1][0-9][0-9]$|^[0-9]$|^[0-9][0-9]$|^[0-1][0-9][0-9]$|^-200$|^200$" ControlToValidate="game9TextBox" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
+                        <td>
+                            <asp:TextBox ID="tiptime" runat="server" Text='<%# Bind("tiptime") %>' />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="tiptime" ErrorMessage="Required" ValidationGroup="EditGroup" />
+                            
+                        </td>
                     </tr>
                 </EditItemTemplate>
                 <EmptyDataTemplate>
@@ -148,7 +156,7 @@
                 <InsertItemTemplate>
                     <tr style="">
                         <td>
-                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" />
+                            <asp:Button ID="InsertButton" runat="server" CommandName="Insert" Text="Insert" ValidationGroup="InsertGroup"/>
                             <asp:Button ID="CancelButton" runat="server" CommandName="Cancel" Text="Clear" />
                         </td>
                         <td>&nbsp;</td>
@@ -217,6 +225,11 @@
                             <asp:RegularExpressionValidator runat="server" ErrorMessage="Please enter a number from -200 to 200" ValidationGroup="InsertGroup"
                                 ValidationExpression="^-[0-9]$|^-[0-9][0-9]$|^-[0-1][0-9][0-9]$|^[0-9]$|^[0-9][0-9]$|^[0-1][0-9][0-9]$|^-200$|^200$" ControlToValidate="game9TextBox" ForeColor="Red"></asp:RegularExpressionValidator>
                         </td>
+                        <td>
+                            <asp:TextBox ID="tiptime" runat="server" Text='<%# Bind("tiptime") %>' />
+                            <asp:RequiredFieldValidator runat="server" ControlToValidate="tiptime" ErrorMessage="Required" ValidationGroup="InsertGroup" />
+                            
+                        </td>
                     </tr>
                 </InsertItemTemplate>
                 <ItemTemplate>
@@ -260,6 +273,9 @@
                         </td>
                         <td>
                             <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
+                            <td>
+                            <asp:Label ID="tiptime" runat="server" Text='<%# Eval("tiptime") %>' />
+                        </td>
                         </td>
                     </tr>
                 </ItemTemplate>
@@ -282,6 +298,7 @@
                                         <th runat="server">game7</th>
                                         <th runat="server">game8</th>
                                         <th runat="server">game9</th>
+                                        <th runat="server">tiptime</th>
                                     </tr>
                                     <tr id="itemPlaceholder" runat="server">
                                     </tr>
@@ -334,6 +351,9 @@
                         </td>
                         <td>
                             <asp:Label ID="game9Label" runat="server" Text='<%# Eval("game9") %>' />
+                            <td>
+                            <asp:Label ID="tiptime" runat="server" Text='<%# Eval("tiptime") %>' />
+                        </td>
                         </td>
                     </tr>
                 </SelectedItemTemplate>
@@ -344,7 +364,7 @@
     </asp:UpdatePanel>
 
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" DeleteCommand="DELETE FROM [tips] WHERE [tipsetID] = @tipsetID" InsertCommand="INSERT INTO [tips] ([username], [roundID], [game1], [game2], [game3], [game4], [game5], [game9], [game8], [game7], [game6]) VALUES (@username, @roundID, @game1, @game2, @game3, @game4, @game5, @game9, @game8, @game7, @game6)" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT [tipsetID], [username], [roundID], [game1], [game2], [game3], [game4], [game5], [game9], [game8], [game7], [game6] FROM [tips]" UpdateCommand="UPDATE [tips] SET [username] = @username, [roundID] = @roundID, [game1] = @game1, [game2] = @game2, [game3] = @game3, [game4] = @game4, [game5] = @game5, [game9] = @game9, [game8] = @game8, [game7] = @game7, [game6] = @game6 WHERE [tipsetID] = @tipsetID">
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AFL_Tipping %>" DeleteCommand="DELETE FROM [tips] WHERE [tipsetID] = @tipsetID" InsertCommand="INSERT INTO [tips] ([username], [roundID], [game1], [game2], [game3], [game4], [game5], [game9], [game8], [game7], [game6], [tiptime]) VALUES (@username, @roundID, @game1, @game2, @game3, @game4, @game5, @game9, @game8, @game7, @game6, @tiptime)" OnSelecting="SqlDataSource1_Selecting" SelectCommand="SELECT [tipsetID], [username], [roundID], [game1], [game2], [game3], [game4], [game5], [game9], [game8], [game7], [game6], [tiptime] FROM [tips]" UpdateCommand="UPDATE [tips] SET [username] = @username, [roundID] = @roundID, [game1] = @game1, [game2] = @game2, [game3] = @game3, [game4] = @game4, [game5] = @game5, [game9] = @game9, [game8] = @game8, [game7] = @game7, [game6] = @game6, [tiptime] = @tiptime WHERE [tipsetID] = @tipsetID">
         <DeleteParameters>
             <asp:Parameter Name="tipsetID" Type="Int32" />
         </DeleteParameters>
@@ -360,6 +380,7 @@
             <asp:Parameter Name="game8" Type="Int32" />
             <asp:Parameter Name="game7" Type="Int32" />
             <asp:Parameter Name="game6" Type="Int32" />
+            <asp:Parameter Name="tiptime" Type="DateTime" />
         </InsertParameters>
         <UpdateParameters>
             <asp:Parameter Name="username" Type="String" />
@@ -373,6 +394,7 @@
             <asp:Parameter Name="game8" Type="Int32" />
             <asp:Parameter Name="game7" Type="Int32" />
             <asp:Parameter Name="game6" Type="Int32" />
+            <asp:Parameter Name="tiptime" Type="DateTime" />
             <asp:Parameter Name="tipsetID" Type="Int32" />
         </UpdateParameters>
     </asp:SqlDataSource>

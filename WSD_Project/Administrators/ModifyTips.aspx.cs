@@ -20,6 +20,8 @@ namespace WSD_Project.Administrators
         }
         protected void ListView1_ItemInserted(object sender, ListViewInsertedEventArgs e)
         {
+            
+
             // Use the Exception property to determine whether there is an exception
             if (e.Exception == null)
             {
